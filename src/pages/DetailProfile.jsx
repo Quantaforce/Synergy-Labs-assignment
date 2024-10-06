@@ -13,7 +13,7 @@ function DetailedProfile(){
     <div className="h-full">
     <ProfileHeader/>
     <div className="h-full flex items-center justify-center ">
-      <div className="px-4 min-w-96 ">
+      <div className="px-4 min-w-80 ">
           <div className="flex justify-between border-b">
             <p className="font-bold">Name</p>
             <p className="font-semibold">{user.name}</p>

@@ -13,10 +13,43 @@
 :root{
   --background: 222.2 84% 4.9%; 
   --border: 217.2 32.6% 17.5%;
-   --primary-foreground: 222.2 47.4% 11.2%;
+ --primary-foreground: 222.2 47.4% 11.2%;
   --primary: 217.2 91.2% 59.8%;
   --foreground: 210 40% 98%;
 }
 body{
-  @apply bg-background text-foreground
+  @apply bg-background text-foreground;
+}
+
+.wrapper{
+  width: min(900px,100% - 3rem);
+  margin-inline: auto;
+}
+th,td{
+  padding: 1rem 0.25rem;
+}
+/*
+the media query below is for makeing table responsive to mobile devices*/
+@media (max-width:750px){
+  th{
+    display: none;
+  }
+  td{
+    display: grid;
+    gap:1rem;
+    grid-template-columns: 10ch auto;
+    padding: 0.5rem 1rem;
+  }
+  td:first-child{
+    padding-top: 1.5rem;
+  }
+  td:last-child{
+    padding-bottom: 1.5rem;
+  }
+  td::before{
+    content: attr(data-cell) ": ";
+    font-weight: bold;
+    text-transform: capitalize;
+    color: white;
+  }
 }

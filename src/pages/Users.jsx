@@ -11,7 +11,9 @@ function Users() {
       <div className='flex justify-center'>
         <button className='bg-primary px-3 py-2 rounded' onClick={()=>navigate('/newuser')}>ADD USER +</button>
       </div>
-      <Table />
+      <div className='wrapper'>
+          <Table />
+      </div>
     </div>
     </>
   )
