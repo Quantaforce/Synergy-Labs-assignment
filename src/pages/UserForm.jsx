@@ -3,11 +3,15 @@ import { useForm } from "react-hook-form";
 import { datacontext } from "../context/Dataprovider";
 import { useNavigate } from "react-router-dom";
 import { Form } from "../components/Form";
+import { UserSchema } from "../schema/userSchema";
+import {zodResolver} from "@hookform/resolvers/zod"
 function UserForm(){
   const {id,setId,data,setData}=useContext(datacontext);
   const [error,setError]=useState(null);
   const navigate=useNavigate();
-  const {register,handleSubmit}=useForm({});
+  const {register,handleSubmit,formState:{errors}}=useForm({
+    resolver:zodResolver(UserSchema)
+  });
   const onsub=async (val)=>{
     try{
       val.id=id;
@@ -33,8 +37,8 @@ function UserForm(){
   }
   return (
     <div className="h-full flex justify-center items-center">
-      <Form onsub={onsub} register={register} handleSubmit={handleSubmit}/>
-      {error!=null && <div className="text-red-500">{error}</div>}
+      <Form onsub={onsub} register={register} errors={errors} handleSubmit={handleSubmit}/>
+      {error && <div className="text-red-500">{error}</div>}
     </div>
     
 
